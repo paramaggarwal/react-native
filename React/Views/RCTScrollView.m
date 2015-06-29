@@ -116,6 +116,29 @@ RCT_NOT_IMPLEMENTED(-init)
 
 - (id<RCTEvent>)coalesceWithEvent:(id<RCTEvent>)newEvent
 {
+  NSMutableArray *updatedChildFrames = [[NSMutableArray alloc] init];
+
+  NSMutableArray *oldUpdatedChildFrames = [self.body objectForKey:@"updatedChildFrames"];
+  if (oldUpdatedChildFrames) {
+    [updatedChildFrames addObjectsFromArray:oldUpdatedChildFrames];
+  }
+
+  NSMutableArray *newUpdatedChildFrames = [newEvent.body objectForKey:@"updatedChildFrames"];
+  if (newUpdatedChildFrames) {
+    [updatedChildFrames addObjectsFromArray:newUpdatedChildFrames];
+  }
+ 
+  // If there are new frames, add them to event data
+  NSDictionary *userData = nil;
+  if (updatedChildFrames.count > 0) {
+    userData = @{@"updatedChildFrames": updatedChildFrames};
+    
+    return [[RCTScrollEvent alloc] initWithType:_type
+                                       reactTag:_viewTag
+                                     scrollView:_scrollView
+                                       userData:userData];
+  }
+
   return newEvent;
 }
 
