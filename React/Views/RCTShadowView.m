@@ -115,6 +115,17 @@ static css_dim_t RCTAspectRatioMeasure(void *context, float width)
   node->children_count = (int)_reactSubviews.count;
 }
 
+// Aspect Ratio
+- (void)setAspectRatio:(CGSize)aspectRatio {
+  _aspectRatio = aspectRatio;
+  if (aspectRatio.width && aspectRatio.height) {
+    self.cssNode->measure = RCTAspectRatioMeasure;
+  } else {
+    self.cssNode->measure = nil;
+  }
+  [self dirtyLayout];
+}
+
 // The absolute stuff is so that we can take into account our absolute position when rounding in order to
 // snap to the pixel grid. For example, say you have the following structure:
 //
