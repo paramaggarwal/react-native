@@ -42,6 +42,10 @@ typedef void (^RCTLogFunction)(
   NSString *message
 );
 
+@interface RCTLog : NSObject
+
+@end
+
 /**
  * A method to generate a string from a collection of log data. To omit any
  * particular data from the log, just pass nil or zero for the argument.
