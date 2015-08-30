@@ -34,18 +34,25 @@ const char *RCTLogLevels[] = {
 static RCTLogFunction RCTCurrentLogFunction;
 static RCTLogLevel RCTCurrentLogThreshold;
 
-__attribute__((constructor))
-static void RCTLogSetup()
-{
-  RCTCurrentLogFunction = RCTDefaultLogFunction;
+@implementation RCTLog
 
++ (void)load
+{
+    [super load];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        RCTCurrentLogFunction = RCTDefaultLogFunction;
+        
 #if RCT_DEBUG
-  RCTCurrentLogThreshold = RCTLogLevelInfo - 1;
+        RCTCurrentLogThreshold = RCTLogLevelInfo - 1;
 #else
-  RCTCurrentLogThreshold = RCTLogLevelError;
+        RCTCurrentLogThreshold = RCTLogLevelError;
 #endif
 
+    });
 }
+
+@end
 
 RCTLogFunction RCTDefaultLogFunction = ^(
   RCTLogLevel level,
