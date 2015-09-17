@@ -39,4 +39,8 @@ RCT_EXPORT_VIEW_PROPERTY(leftButtonIcon, UIImage)
 RCT_EXPORT_VIEW_PROPERTY(rightButtonIcon, UIImage)
 RCT_EXPORT_VIEW_PROPERTY(rightButtonTitle, NSString)
 
+RCT_EXPORT_VIEW_PROPERTY(viewControllerStoryboard, NSString)
+RCT_EXPORT_VIEW_PROPERTY(viewControllerIdentifier, NSString)
+RCT_EXPORT_VIEW_PROPERTY(viewControllerProperties, NSDictionary)
+
 @end

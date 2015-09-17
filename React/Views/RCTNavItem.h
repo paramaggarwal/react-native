@@ -29,4 +29,13 @@
 @property (nonatomic, readonly) UIBarButtonItem *leftButtonItem;
 @property (nonatomic, readonly) UIBarButtonItem *rightButtonItem;
 
+/*
+ * Adds the ability to use pre-written view
+ * controllers in the navigation stack created
+ * from JS and let them have full control.
+ */
+@property (nonatomic, copy) NSString *viewControllerStoryboard;
+@property (nonatomic, copy) NSString *viewControllerIdentifier;
+@property (nonatomic, copy) NSDictionary *viewControllerProperties;
+
 @end

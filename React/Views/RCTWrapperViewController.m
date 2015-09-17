@@ -21,7 +21,6 @@
 {
   UIView *_wrapperView;
   UIView *_contentView;
-  RCTEventDispatcher *_eventDispatcher;
   CGFloat _previousTopLayout;
   CGFloat _previousBottomLayout;
 }
@@ -92,9 +91,9 @@ static UIView *RCTFindNavBarShadowViewInView(UIView *view)
     bar.barTintColor = _navItem.barTintColor;
     bar.tintColor = _navItem.tintColor;
     bar.translucent = _navItem.translucent;
-    bar.titleTextAttributes = _navItem.titleTextColor ? @{
-      NSForegroundColorAttributeName: _navItem.titleTextColor
-    } : nil;
+//    bar.titleTextAttributes = _navItem.titleTextColor ? @{
+//      NSForegroundColorAttributeName: _navItem.titleTextColor
+//    } : nil;
 
     RCTFindNavBarShadowViewInView(bar).hidden = _navItem.shadowHidden;
 

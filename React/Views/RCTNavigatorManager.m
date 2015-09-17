@@ -32,6 +32,7 @@ RCT_EXPORT_VIEW_PROPERTY(requestedTopOfStack, NSInteger)
     @"navigationComplete",
     @"navLeftButtonTap",
     @"navRightButtonTap",
+    @"viewControllerEvent",
   ];
 }
 
